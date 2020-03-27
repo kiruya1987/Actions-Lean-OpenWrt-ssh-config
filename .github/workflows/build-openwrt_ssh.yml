@@ -80,11 +80,14 @@ jobs:
       uses: P3TERX/debugger-action@master
       if: env.SSH_ACTIONS == 'true'
       
+    - name: Copy config files to folder
+      run: cd openwrt && mkdir config && cp *.config config/
+      
     - name: Upload bin directory
       uses: actions/upload-artifact@master
       with:
         name: OpenWrt_directory
-        path: openwrt/*.config
+        path: openwrt/config
 
     - name: Organize files
       id: organize
