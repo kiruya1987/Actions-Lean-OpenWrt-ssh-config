@@ -84,7 +84,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: OpenWrt_directory
-        path: openwrt
+        path: openwrt/*.config
 
     - name: Organize files
       id: organize
