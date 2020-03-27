@@ -81,13 +81,13 @@ jobs:
       if: env.SSH_ACTIONS == 'true'
       
     - name: Copy config files to folder
-      run: cd openwrt && mkdir config && cp *.config config/
+      run: cd openwrt && mkdir new_config && cp *.config new_config/
       
     - name: Upload bin directory
       uses: actions/upload-artifact@master
       with:
         name: OpenWrt_directory
-        path: openwrt/config
+        path: openwrt/new_config
 
     - name: Organize files
       id: organize
