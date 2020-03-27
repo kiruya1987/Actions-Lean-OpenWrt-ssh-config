@@ -86,20 +86,6 @@ jobs:
     - name: Upload bin directory
       uses: actions/upload-artifact@master
       with:
-        name: OpenWrt_directory
+        name: OpenWrt_config
         path: openwrt/new_config
 
-    - name: Organize files
-      id: organize
-      if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
-      run: |
-        cd openwrt/new_config
-        rm -rf packages
-        echo "::set-env name=FIRMWARE::$(pwd)"
-        echo "::set-output name=status::success"
-    - name: Upload firmware directory
-      uses: actions/upload-artifact@master
-      if: steps.organize.outputs.status == 'success' && !cancelled()
-      with:
-        name: OpenWrt_firmware
-        path: ${{ env.FIRMWARE }}
